@@ -1,11 +1,12 @@
 import "./App.css";
-import React, { useReducer } from "react";
+import React, { useReducer, createContext } from "react";
 import FilterButtons from "./component/FilterButtons";
 import TodoList from "./component/TodoList";
 import AddTodoForm from "./component/AddTodoForm";
 import filterReducer from "./reducer/filter";
 import todoReducer from "./reducer/todo";
 import initialTodos from "./asset/initialTodos";
+import { TodoContext } from "./context/TodoContext";
 
 const App = () => {
   const [todos, dispatchTodos] = useReducer(todoReducer, initialTodos);
@@ -22,12 +23,13 @@ const App = () => {
     }
     return false;
   });
-  console.log(filteredTodos);
   return (
     <div>
-      <FilterButtons dispatch={dispatchFilterTodos} />
-      <TodoList dispatch={dispatchTodos} todos={filteredTodos} />
-      <AddTodoForm dispatch={dispatchTodos} />
+      <TodoContext.Provider value={dispatchTodos}>
+        <FilterButtons dispatch={dispatchFilterTodos} />
+        <TodoList todos={filteredTodos} />
+        <AddTodoForm />
+      </TodoContext.Provider>
     </div>
   );
 };

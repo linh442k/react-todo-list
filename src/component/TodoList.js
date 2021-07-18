@@ -1,5 +1,7 @@
-import React from "react";
-const TodoList = ({ dispatch, todos }) => {
+import React, { useContext } from "react";
+import { TodoContext } from "../context/TodoContext";
+const TodoList = ({ todos }) => {
+  const dispatch = useContext(TodoContext);
   const handleChangeCheckBox = (todo) => {
     dispatch({
       type: todo.complete ? "UNDO_TODO" : "DO_TODO",
@@ -26,15 +28,16 @@ const TodoList = ({ dispatch, todos }) => {
     </ul>
   );
 };
-// const TodoList = ({ dispatch, todos }) => (
+// const TodoList = ({ todos }) => (
 //   <ul>
 //     {todos.map((todo) => (
-//       <TodoItem key={todo.id} dispatch={dispatch} todo={todo} />
+//       <TodoItem key={todo.id} todo={todo} />
 //     ))}
 //   </ul>
 // );
 
-// const TodoItem = ({ dispatch, todo }) => {
+// const TodoItem = ({ todo }) => {
+// const dispatch = useContext(TodoContext);
 //   const handleChange = () =>
 //     dispatch({
 //       type: todo.complete ? "UNDO_TODO" : "DO_TODO",
