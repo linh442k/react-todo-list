@@ -1,5 +1,5 @@
 import uuid from "uuid/v4";
-const initialTodos = [
+const defaultTodos = [
   {
     id: uuid(),
     task: "Learn React",
@@ -19,4 +19,6 @@ const initialTodos = [
     deleted: false,
   },
 ];
+const initialTodos =
+  JSON.parse(localStorage.getItem("initial_todos")) || defaultTodos;
 export default initialTodos;
