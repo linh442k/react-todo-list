@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
-import { TodoContext } from "../context/TodoContext";
+// import TodoContext from "../context/TodoContext";
+import GlobalContext from "../context/GlobalContext";
 const TodoList = ({ todos }) => {
-  const dispatch = useContext(TodoContext);
+  const dispatch = useContext(GlobalContext);
   const handleChangeCheckBox = (todo) => {
     dispatch({
       type: todo.complete ? "UNDO_TODO" : "DO_TODO",

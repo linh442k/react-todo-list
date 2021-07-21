@@ -1,5 +1,7 @@
-import React from "react";
-const FilterButtons = ({ dispatch }) => {
+import React, { useContext } from "react";
+import GlobalContext from "../context/GlobalContext";
+const FilterButtons = () => {
+  const dispatch = useContext(GlobalContext);
   const handleShowAll = () => {
     dispatch({ type: "SHOW_ALL" });
   };

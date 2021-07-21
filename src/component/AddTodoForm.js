@@ -1,8 +1,9 @@
 import React, { useState, useContext } from "react";
-import { TodoContext } from "../context/TodoContext";
+// import TodoContext from "../context/TodoContext";
+import GlobalContext from "../context/GlobalContext";
 import uuid from "uuid/v4";
 const AddTodoForm = () => {
-  const dispatch = useContext(TodoContext);
+  const dispatch = useContext(GlobalContext);
   const [task, setTask] = useState("");
   const handleChangeInput = (event) => {
     setTask(event.target.value);
