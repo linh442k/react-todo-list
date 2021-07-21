@@ -22,6 +22,26 @@ const todoReducer = (state, action) => {
         id: action.id,
         complete: false,
       });
+    case "DELETE_TODO":
+      return state.map((todo) => {
+        if (todo.id === action.id) {
+          return { ...todo, deleted: true };
+        } else {
+          return todo;
+        }
+      });
+    case "RESTORE_TODO":
+      return state.map((todo) => {
+        if (todo.id === action.id) {
+          return { ...todo, deleted: false };
+        } else {
+          return todo;
+        }
+      });
+    case "PERMA_DELETE_TODO":
+      return state.filter(function (todo) {
+        return todo.id !== action.id;
+      });
     default:
       // throw new Error();
       return state;

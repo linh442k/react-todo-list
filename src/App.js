@@ -16,13 +16,19 @@ const App = () => {
     [dispatchTodos, dispatchFilterTodos].forEach((fn) => fn(action));
   };
   const filteredTodos = todos.filter((todo) => {
-    if (filterTodos === "ALL") {
-      return true;
+    console.log(todo);
+    if (!todo.deleted) {
+      if (filterTodos === "ALL") {
+        return true;
+      }
+      if (filterTodos === "COMPLETE" && todo.complete) {
+        return true;
+      }
+      if (filterTodos === "INCOMPLETE" && !todo.complete) {
+        return true;
+      }
     }
-    if (filterTodos === "COMPLETE" && todo.complete) {
-      return true;
-    }
-    if (filterTodos === "INCOMPLETE" && !todo.complete) {
+    if (filterTodos === "DELETED" && todo.deleted) {
       return true;
     }
     return false;

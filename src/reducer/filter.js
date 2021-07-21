@@ -6,6 +6,8 @@ const filterReducer = (state, action) => {
       return "COMPLETE";
     case "SHOW_INCOMPLETE":
       return "INCOMPLETE";
+    case "SHOW_DELETED":
+      return "DELETED";
     default:
       // throw new Error();
       return state;
